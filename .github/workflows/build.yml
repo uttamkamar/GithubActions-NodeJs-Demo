@@ -1,22 +1,21 @@
-name: build nodejs Application 
+name: build nodejs Application using matrix strategy
 on: 
  workflow_dispatch:
  push:
-  branches:
-   - master 
- pull_request:
-  branches:
-   - master
-jobs:
-  job1: 
-   runs-on: ubuntu-latest
+jobs: 
+  job1:
+   strategy: 
+     matrix: 
+      node-version: [18]
+      operating-system: [ubuntu-latest, windows-latest]   
+   runs-on: ${{ matrix.operating-system }}
    steps: 
     - name: Clone the repo 
       uses: actions/checkout@v4
     - name: Install nodejs
       uses: actions/setup-node@v4
       with: 
-          node-version: 18
+          node-version: ${{ matrix.node-version }}
           cache: 'npm'
     - name: Install dependencies 
       run: npm ci 
