@@ -4,6 +4,7 @@ on:
  push:
 jobs: 
   job1:
+   needs: job2
    continue-on-error: true
    runs-on: ubuntu-latest
    strategy: 
@@ -19,7 +20,6 @@ jobs:
           node-version: 18
           cache: 'npm' 
   job2:
-   needs: job1
    strategy: 
      matrix: 
       node-version: [16,18]
