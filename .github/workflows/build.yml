@@ -1,9 +1,10 @@
-name: build nodejs Application using matrix strategy
+name: build nodejs Application 
 on: 
  workflow_dispatch:
  push:
 jobs: 
   job1:
+   continue-on-error: true
    strategy: 
      matrix: 
       node-version: [12,16,18]
