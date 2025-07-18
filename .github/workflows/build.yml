@@ -1,13 +1,12 @@
-
 name: build and test nodejs Application
-on: 
+on:
   workflow_dispatch: #run job manually
   push:
     branches:
-      -master
-  # branches-ignore:
-  #   - dev
-  #   - test
+      - master
+    # branches-ignore:
+    #   - dev
+    #   - test
   pull_request:
     branches:
       - master
@@ -17,12 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone the repo
-        uses: actions/checkout@v4.2.2 
+        uses: actions/checkout@v4.2.2
       - name: Install nodejs
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'npm'
+          cache: "npm"
       - name: Install dependencies
         run: npm ci
       - name: Executes test cases
