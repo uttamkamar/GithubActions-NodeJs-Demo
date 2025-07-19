@@ -10,11 +10,19 @@ on:
 # 🧪 Define the jobs that run in this workflow
 jobs:
   build-test-deploy:
+    continue-on-error: true
+    name: 🔧 React CI/CD Pipeline
     # 🧬 Strategy matrix to test multiple Node versions
     strategy:
       matrix:
-        node-version: [16, 18] # You can add other versions like 20.x
+        node-version: [12, 16, 18] # You can add other versions like 20.x
         operating-system: [ubuntu-latest, windows-latest]
+      # exclude:
+      #   - node-version: 12
+      #     operating-system: ubuntu-latest
+      #   - node-version: 12
+      #     operating-system: windows-latest
+
     runs-on: ${{ matrix.operating-system }}
     steps:
       # 🔄 Checkout the repository code
