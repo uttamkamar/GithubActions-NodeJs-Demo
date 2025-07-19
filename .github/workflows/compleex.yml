@@ -13,7 +13,7 @@ jobs:
     # 🧬 Strategy matrix to test multiple Node versions
     strategy:
       matrix:
-        node-version: [16.x, 18.x] # You can add other versions like 20.x
+        node-version: [16, 18] # You can add other versions like 20.x
         operating-system: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.operating-system }}
     steps:
